@@ -1,4 +1,5 @@
 import { Grid, Card, Avatar, CardHeader, makeStyles } from '@material-ui/core';
+import Layout from '../components/Layout';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -10,16 +11,18 @@ const useStyles = makeStyles((theme) => ({
 export default function Home() {
   const classes = useStyles();
   return (
-    <Grid container className={classes.root} spacing={3}>
-      <Grid item xs={12} md={4}>
-        <Card>
-          <CardHeader
-            avatar={<Avatar aria-label='category'>C</Avatar>}
-            title='Category'
-            subheader='See all'
-          ></CardHeader>
-        </Card>
+    <Layout>
+      <Grid container className={classes.root} spacing={3}>
+        <Grid item xs={12} md={4}>
+          <Card>
+            <CardHeader
+              avatar={<Avatar aria-label='category'>C</Avatar>}
+              title='Category'
+              subheader='See all'
+            ></CardHeader>
+          </Card>
+        </Grid>
       </Grid>
-    </Grid>
+    </Layout>
   );
 }
