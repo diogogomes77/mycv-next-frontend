@@ -1,5 +1,6 @@
 import { Grid, Card, Avatar, CardHeader, makeStyles } from '@material-ui/core';
 import Layout from '../components/Layout';
+import axios from 'axios';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -8,30 +9,35 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Home({ number }) {
+export default function Home({ projects }) {
   const classes = useStyles();
   return (
     <Layout>
       <Grid container className={classes.root} spacing={3}>
-        <Grid item xs={12} md={4}>
-          <Card>
-            <CardHeader
-              avatar={<Avatar aria-label='category'>C</Avatar>}
-              title={`Category ${number}`}
-              subheader='See all'
-            ></CardHeader>
-          </Card>
-        </Grid>
+        {projects.map((project) => (
+          <Grid item xs={12} md={4}>
+            <Card>
+              <CardHeader
+                avatar={
+                  <Avatar aria-label='project'>{project.name.charAt(0)}</Avatar>
+                }
+                title={project.name}
+                subheader={project.description}
+              ></CardHeader>
+            </Card>
+          </Grid>
+        ))}
       </Grid>
     </Layout>
   );
 }
 
 export async function getServerSideProps() {
-  // fetch our data
+  const { data } = await axios.get(
+    'https://mycv-django-api-staging.herokuapp.com/projects/'
+  );
 
-  const number = 5;
   return {
-    props: { number: number },
+    props: { projects: data.results },
   };
 }

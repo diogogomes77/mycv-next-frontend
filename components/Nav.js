@@ -34,7 +34,7 @@ const Nav = () => {
             <MenuIcon />
           </IconButton>
           <Typography variant='h6' className={classes.title}>
-            Local Reviews
+            MyCV
           </Typography>
         </Toolbar>
       </AppBar>
