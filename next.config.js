@@ -5,8 +5,8 @@ const nextConfig = {
   reactStrictMode: true,
   assetPrefix: !debug ? '/mycv-next-frontend/' : '',
   images: {
-    loader: 'imgix',
-    path: '/',
+    loader: 'akamai',
+    path: '',
   },
 };
 
