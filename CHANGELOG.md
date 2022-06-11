@@ -1,3 +1,10 @@
+# [1.1.0](https://github.com/diogogomes77/mycv-next-frontend/compare/v1.0.0...v1.1.0) (2022-06-11)
+
+
+### Features
+
+* **3:** fill the home page ([#19](https://github.com/diogogomes77/mycv-next-frontend/issues/19)) ([3636bdd](https://github.com/diogogomes77/mycv-next-frontend/commit/3636bdd97631e324be3c1d75d4b384220c1b8bf3))
+
 # 1.0.0 (2022-06-11)
 
 
