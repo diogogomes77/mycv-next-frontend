@@ -8,6 +8,7 @@
     "start": "next start",
     "lint": "next lint",
     "test": "jest --coverage --passWithNoTests",
+    "prettier": "prettier pages -c",
     "deploy": "rm -rf node_modules/.cache && next build && next export && touch out/.nojekyll && git add out/ && git commit -m \"Deploy Next.js to gh-pages\" && git push origin `git subtree split --prefix out`:gh-pages --force"
   },
   "dependencies": {
@@ -25,6 +26,7 @@
     "eslint-config-next": "12.1.6",
     "jest": "^28.1.1",
     "jest-environment-jsdom": "^28.1.1",
+    "prettier": "^2.6.2",
     "typescript": "4.7.3"
   }
 }

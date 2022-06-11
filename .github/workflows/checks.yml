@@ -25,3 +25,7 @@ jobs:
             - name: Run tests
               run: |
                   yarn test
+
+            - name: Run Prettier
+              run: |
+                  yarn prettier
