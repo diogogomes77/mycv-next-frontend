@@ -54,6 +54,7 @@ export default Projects;
 export const getServerSideProps = async () => {
   //const { data } = await axios.get(`${process.env.BACKEND_URL}projects/`);
   console.log('BACKEND_URL: ', BACKEND_URL);
+
   const { data } = await axios.get(`${BACKEND_URL}projects/`);
 
   return {
