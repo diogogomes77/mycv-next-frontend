@@ -1,12 +1,25 @@
 {
-  "extends": "next/core-web-vitals"
+  "extends": "next/core-web-vitals",
+  //"parser": "@typescript-eslint/parser",
+  //"plugins": ["@typescript-eslint"],
   // "rules": {
-  //   "quotes": ["error", "single"],
-  //   // we want to force semicolons
-  //   "semi": ["error", "always"],
-  //   // we use 2 spaces to indent our code
-  //   "indent": ["error", 2],
-  //   // we want to avoid extraneous spaces
-  //   "no-multi-spaces": ["error"]
+  //   "semi": ["error", "never"],
+  //   "quotes": [2, "single"]
   // }
+  // "import/resolver": {
+  //   "node": {
+  //     "extensions": [".js", ".jsx", ".d.ts", ".ts", ".tsx"],
+  //     "moduleDirectory": ["node_modules", "./"]
+  //   }
+  // }
+  "rules": {
+    "quotes": ["error", "single"],
+    // we want to force semicolons
+    "semi": ["error", "always"],
+    // we use 2 spaces to indent our code
+    "indent": ["error", 2],
+    // we want to avoid extraneous spaces
+    "no-multi-spaces": ["error"],
+    "no-multiple-empty-lines": 2
+  }
 }

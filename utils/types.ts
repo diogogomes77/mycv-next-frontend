@@ -1,10 +1,22 @@
+export type Group = {
+  id: number;
+  name: string;
+};
+
+export type Collaborator = {
+  id: number;
+  first_name: string;
+  last_name: string;
+  groups: Group[];
+};
+
 export type Collaboration = {
-  url: string;
+  id: number;
   started_at: string;
   ended_at: string;
   project: string;
-  collaborator: string;
-  technologies: string[];
+  collaborator: Collaborator;
+  technologies: Technology[];
 };
 
 export type Project = {
@@ -19,5 +31,5 @@ export type Technology = {
   name: string;
   content: string;
   url: string;
-  parents: string[];
+  parents: Technology[];
 };
