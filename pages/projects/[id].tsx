@@ -7,6 +7,7 @@ import { Collaboration, Project } from 'utils/types';
 import { BACKEND_URL } from 'utils/consts';
 import TechnologyList from 'components/TechnologyList';
 import ProjectTechnologyList from 'components/ProjectTechnologyList';
+import Head from 'next/head';
 
 type IdProps = {
   project: Project;
@@ -14,47 +15,47 @@ type IdProps = {
 
 const Id: NextPage<IdProps> = ({ project }) => {
   return (
-    <div>
-      <h2 className={styles.title}>{project.name}</h2>
-      <p className={styles.description}>{project.description}</p>
-      <div className={styles.container}>
+    <div className={styles.container}>
+      <Head>
+        <title>{project.name}</title>
+        <meta name="description" content="Project where I participated" />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
+
+      <main className={styles.main}>
+        <h1 className={styles.title}>{project.name}</h1>
+        <p className={styles.description}>{project.description}</p>
+
         <h3>Collaborations</h3>
-        {project.collaborations.map((collaboration: Collaboration) => (
-          <div
-            key={`collaboration-${collaboration.id}`}
-            className={styles.card}
-          >
-            <div className={styles.card}>
+        <div className={styles.grid}>
+          {project.collaborations.map((collaboration: Collaboration) => (
+            <div
+              key={`collaboration-${collaboration.id}`}
+              className={styles.card}
+            >
               <h2>{collaboration.collaborator.first_name}</h2>
-              <p>started: {collaboration.started_at}</p>
-              <p>ended: {collaboration.ended_at}</p>
-              <p>roles: </p>
-              {collaboration.collaborator.groups.map(group => (
-                <div key={`group-${group.id}`} className={styles.card}>
-                  <p>{group.name}</p>
-                </div>
-              ))}
+              <p>from: {collaboration.started_at}</p>
+              <p>to: {collaboration.ended_at}</p>
+              <p>
+                {collaboration.collaborator.groups.length > 1
+                  ? 'roles: '
+                  : 'role: '}
+                {collaboration.collaborator.groups.map(group => (
+                  <span key={`group-${group.id}`}>{group.name}</span>
+                ))}
+              </p>
 
               <div>
                 {collaboration.technologies.length > 0 && <h3>Technologies</h3>}
-                {collaboration.technologies.map(technology => (
-                  <div
-                    key={`technology-${technology.id}`}
-                    className={styles.card}
-                  >
-                    <Link href={`/technologies/${technology.id}`}>
-                      <p>{technology.name}</p>
-                    </Link>
-                  </div>
-                ))}
+                <TechnologyList technologies={collaboration.technologies} />
               </div>
             </div>
-          </div>
-        ))}
-      </div>
+          ))}
+        </div>
+      </main>
       {project.technologies.length > 0 && (
         <div className={styles.container}>
-          <h3>Technologies</h3>
+          <h3>Project Technologies</h3>
           {<ProjectTechnologyList projectTechnologies={project.technologies} />}
         </div>
       )}
