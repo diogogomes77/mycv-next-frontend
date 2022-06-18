@@ -3,10 +3,10 @@ import Head from 'next/head';
 import styles from '../../styles/Home.module.css';
 import axios from 'axios';
 import React from 'react';
-import { Project } from '../../utils/types';
-import { BACKEND_URL } from '../../utils/consts';
-import Footer from '../components/Footer';
 import Link from 'next/link';
+import { Project } from 'utils/types';
+import { BACKEND_URL } from 'utils/consts';
+import Footer from 'components/Footer';
 
 type ProjectsProps = {
   projects: Project[];

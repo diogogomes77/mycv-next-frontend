@@ -1,11 +1,11 @@
 import axios from 'axios';
+import Footer from 'components/Footer';
 import { NextPage } from 'next';
 import Head from 'next/head';
 import React from 'react';
+import { BACKEND_URL } from 'utils/consts';
+import { Technology } from 'utils/types';
 import styles from '../../styles/Home.module.css';
-import { BACKEND_URL } from '../../utils/consts';
-import { Technology } from '../../utils/types';
-import Footer from '../components/Footer';
 
 type TechnologiesProps = {
   technologies: Technology[];
