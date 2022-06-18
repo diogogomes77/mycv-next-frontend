@@ -38,6 +38,12 @@ export type TechnologyProject = {
   name: string;
 };
 
+export type TechnologyCollaboration = {
+  id: number;
+  project: Project;
+  collaborator: Collaborator;
+};
+
 export type Technology = {
   id: number;
   name: string;
@@ -45,4 +51,5 @@ export type Technology = {
   url: string;
   parents: Technology[];
   projects: TechnologyProject[];
+  collaborations: TechnologyCollaboration[];
 };

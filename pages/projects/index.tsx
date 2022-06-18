@@ -32,7 +32,7 @@ const Projects: NextPage<ProjectsProps> = ({ projects }) => {
           {projects.map((project: Project) => (
             <Link
               key={`project-${project.id}`}
-              href={`projects/${project.id}`}
+              href={`/projects/${project.id}`}
               className={styles.card}
             >
               <div className={styles.card}>

@@ -8,6 +8,8 @@ import { Technology } from 'utils/types';
 import Head from 'next/head';
 import Footer from 'components/Footer';
 import TechnologyProjectList from 'components/TechnologyProjectList';
+import CollaborationList from 'components/CollaborationList';
+import TechnologyCollaborationList from 'components/TechnologyCollaborationList';
 
 type IdProps = {
   technology: Technology;
@@ -34,6 +36,13 @@ const Id: NextPage<IdProps> = ({ technology }) => {
         {technology.projects.length > 0 && <h3>Projects</h3>}
         {technology.projects.length > 0 && (
           <TechnologyProjectList technologyProject={technology.projects} />
+        )}
+
+        {technology.collaborations.length > 0 && <h3>Collaborations</h3>}
+        {technology.collaborations.length > 0 && (
+          <TechnologyCollaborationList
+            collaborations={technology.collaborations}
+          />
         )}
       </main>
       <Footer />
