@@ -33,10 +33,16 @@ export type ProjectTechnology = {
   technology: Technology;
 };
 
+export type TechnologyProject = {
+  id: number;
+  name: string;
+};
+
 export type Technology = {
   id: number;
   name: string;
   content: string;
   url: string;
   parents: Technology[];
+  projects: TechnologyProject[];
 };

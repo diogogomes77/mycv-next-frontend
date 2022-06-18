@@ -7,6 +7,7 @@ import { BACKEND_URL } from 'utils/consts';
 import ProjectTechnologyList from 'components/ProjectTechnologyList';
 import Head from 'next/head';
 import CollaborationList from 'components/CollaborationList';
+import Footer from 'components/Footer';
 
 type IdProps = {
   project: Project;
@@ -27,13 +28,19 @@ const Id: NextPage<IdProps> = ({ project }) => {
 
         <h3>Collaborations</h3>
         <CollaborationList collaborations={project.collaborations} />
+
+        {project.technologies.length > 0 && (
+          <div className={styles.container}>
+            <h3>Project Technologies</h3>
+            {
+              <ProjectTechnologyList
+                projectTechnologies={project.technologies}
+              />
+            }
+          </div>
+        )}
       </main>
-      {project.technologies.length > 0 && (
-        <div className={styles.container}>
-          <h3>Project Technologies</h3>
-          {<ProjectTechnologyList projectTechnologies={project.technologies} />}
-        </div>
-      )}
+      <Footer />
     </div>
   );
 };
