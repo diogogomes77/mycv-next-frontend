@@ -10,8 +10,11 @@ type Props = {
 const TechnologyList: React.FC<Props> = ({ technologies }) => {
   return (
     <div className={styles.container}>
-      {technologies.map((parent: Technology) => (
-        <TechnologyCard technology={parent} key={`technology-${parent.id}`} />
+      {technologies.map((technology: Technology) => (
+        <TechnologyCard
+          technology={technology}
+          key={`technology-${technology.id}`}
+        />
       ))}
     </div>
   );

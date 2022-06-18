@@ -5,6 +5,8 @@ import axios from 'axios';
 import Link from 'next/link';
 import { Collaboration, Project } from 'utils/types';
 import { BACKEND_URL } from 'utils/consts';
+import TechnologyList from 'components/TechnologyList';
+import ProjectTechnologyList from 'components/ProjectTechnologyList';
 
 type IdProps = {
   project: Project;
@@ -50,6 +52,12 @@ const Id: NextPage<IdProps> = ({ project }) => {
           </div>
         ))}
       </div>
+      {project.technologies.length > 0 && (
+        <div className={styles.container}>
+          <h3>Technologies</h3>
+          {<ProjectTechnologyList projectTechnologies={project.technologies} />}
+        </div>
+      )}
     </div>
   );
 };

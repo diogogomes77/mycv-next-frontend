@@ -24,6 +24,13 @@ export type Project = {
   name: string;
   description: string;
   collaborations: Collaboration[];
+  technologies: ProjectTechnology[];
+};
+
+export type ProjectTechnology = {
+  id: number;
+  comment: string;
+  technology: Technology;
 };
 
 export type Technology = {
