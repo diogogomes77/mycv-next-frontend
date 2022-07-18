@@ -1,0 +1,7 @@
+{
+  "withSeparateModelsAndApi": "true",
+  "supportsES6": "true",
+  "generateAliasAsModel": "true",
+  "enumPropertyNaming": "PascalCase",
+  "modelPropertyNaming": "camelCase"
+}
