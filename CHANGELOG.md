@@ -1,3 +1,10 @@
+# [1.2.0](https://github.com/diogogomes77/mycv-next-frontend/compare/v1.1.0...v1.2.0) (2022-07-18)
+
+
+### Features
+
+* **21:** add openapi-generator ([#23](https://github.com/diogogomes77/mycv-next-frontend/issues/23)) ([4662084](https://github.com/diogogomes77/mycv-next-frontend/commit/4662084f90ae805b3d0f70d393d82f2dab2cf8b6))
+
 # [1.1.0](https://github.com/diogogomes77/mycv-next-frontend/compare/v1.0.0...v1.1.0) (2022-06-11)
 
 
