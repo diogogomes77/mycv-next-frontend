@@ -1,13 +1,13 @@
 import { GetServerSideProps, NextPage } from 'next';
 import React from 'react';
 import styles from '../../styles/Home.module.css';
-import axios from 'axios';
 import { Project } from 'utils/types';
-import { BACKEND_URL } from 'utils/consts';
 import ProjectTechnologyList from 'components/ProjectTechnologyList';
 import Head from 'next/head';
 import CollaborationList from 'components/CollaborationList';
 import Footer from 'components/Footer';
+import { projectsApi } from 'config/createAxiosInstance';
+import { ProjectsApiProjectsReadRequest } from 'config/generated-sdk';
 
 type IdProps = {
   project: Project;
@@ -52,7 +52,10 @@ export const getServerSideProps: GetServerSideProps = async context => {
     query: { id },
   } = context;
 
-  const { data } = await axios.get(`${BACKEND_URL}projects/${id}`);
+  const params: ProjectsApiProjectsReadRequest = {
+    id: (id ?? 0) as number,
+  };
+  const { data } = await projectsApi.projectsRead(params);
 
   return {
     props: { project: data },

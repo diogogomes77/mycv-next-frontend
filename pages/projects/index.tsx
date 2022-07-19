@@ -7,6 +7,7 @@ import Link from 'next/link';
 import { Project } from 'utils/types';
 import { BACKEND_URL } from 'utils/consts';
 import Footer from 'components/Footer';
+import { projectsApi } from 'config/createAxiosInstance';
 
 type ProjectsProps = {
   projects: Project[];
@@ -52,10 +53,8 @@ const Projects: NextPage<ProjectsProps> = ({ projects }) => {
 export default Projects;
 
 export const getServerSideProps = async () => {
-  //const { data } = await axios.get(`${process.env.BACKEND_URL}projects/`);
   console.log('BACKEND_URL: ', BACKEND_URL);
-
-  const { data } = await axios.get(`${BACKEND_URL}projects/`);
+  const { data } = await projectsApi.projectsList();
 
   return {
     props: { projects: data.results },
