@@ -15,25 +15,19 @@
 /**
  *
  * @export
- * @interface CollaborationCollaboratorGroups
+ * @interface Group
  */
-export interface CollaborationCollaboratorGroups {
+export interface Group {
   /**
    *
    * @type {number}
-   * @memberof CollaborationCollaboratorGroups
+   * @memberof Group
    */
   id?: number;
   /**
    *
    * @type {string}
-   * @memberof CollaborationCollaboratorGroups
+   * @memberof Group
    */
   name: string;
-  /**
-   *
-   * @type {Set<number>}
-   * @memberof CollaborationCollaboratorGroups
-   */
-  permissions?: Set<number>;
 }

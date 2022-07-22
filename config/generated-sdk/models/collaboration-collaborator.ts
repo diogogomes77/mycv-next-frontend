@@ -12,9 +12,6 @@
  * Do not edit the class manually.
  */
 
-import { CollaborationCollaboratorGroups } from './collaboration-collaborator-groups';
-import { CollaborationCollaboratorUserPermissions } from './collaboration-collaborator-user-permissions';
-
 /**
  *
  * @export
@@ -88,15 +85,15 @@ export interface CollaborationCollaborator {
    */
   dateJoined?: string;
   /**
-   *
-   * @type {Array<CollaborationCollaboratorGroups>}
+   * The groups this user belongs to. A user will get all permissions granted to each of their groups.
+   * @type {Set<number>}
    * @memberof CollaborationCollaborator
    */
-  groups?: Array<CollaborationCollaboratorGroups>;
+  groups?: Set<number>;
   /**
-   *
-   * @type {Array<CollaborationCollaboratorUserPermissions>}
+   * Specific permissions for this user.
+   * @type {Set<number>}
    * @memberof CollaborationCollaborator
    */
-  userPermissions?: Array<CollaborationCollaboratorUserPermissions>;
+  userPermissions?: Set<number>;
 }

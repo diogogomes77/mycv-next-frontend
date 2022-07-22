@@ -12,8 +12,6 @@
  * Do not edit the class manually.
  */
 
-import { CollaborationParents } from './collaboration-parents';
-
 /**
  *
  * @export
@@ -40,8 +38,8 @@ export interface CollaborationTechnologies {
   content?: string | null;
   /**
    *
-   * @type {Array<CollaborationParents>}
+   * @type {Set<number>}
    * @memberof CollaborationTechnologies
    */
-  parents?: Array<CollaborationParents>;
+  parents?: Set<number>;
 }

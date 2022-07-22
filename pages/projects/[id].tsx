@@ -1,19 +1,20 @@
 import { GetServerSideProps, NextPage } from 'next';
 import React from 'react';
 import styles from '../../styles/Home.module.css';
-import { Project } from 'utils/types';
 import ProjectTechnologyList from 'components/ProjectTechnologyList';
 import Head from 'next/head';
 import CollaborationList from 'components/CollaborationList';
 import Footer from 'components/Footer';
 import { projectsApi } from 'config/createAxiosInstance';
 import { ProjectsApiProjectsReadRequest } from 'config/generated-sdk';
+import { Project } from 'config/generated-sdk/models/project';
 
 type IdProps = {
   project: Project;
 };
 
 const Id: NextPage<IdProps> = ({ project }) => {
+  const { collaborations, technologies } = project;
   return (
     <div className={styles.container}>
       <Head>
@@ -26,17 +27,17 @@ const Id: NextPage<IdProps> = ({ project }) => {
         <h1 className={styles.title}>{project.name}</h1>
         <p className={styles.description}>{project.description}</p>
 
-        <h3>Collaborations</h3>
-        <CollaborationList collaborations={project.collaborations} />
+        {collaborations && collaborations.length > 0 && (
+          <div className={styles.container}>
+            <h3>Collaborations</h3>
+            <CollaborationList collaborations={collaborations} />
+          </div>
+        )}
 
-        {project.technologies.length > 0 && (
+        {technologies && technologies.length > 0 && (
           <div className={styles.container}>
             <h3>Project Technologies</h3>
-            {
-              <ProjectTechnologyList
-                projectTechnologies={project.technologies}
-              />
-            }
+            {<ProjectTechnologyList projectTechnologies={technologies} />}
           </div>
         )}
       </main>

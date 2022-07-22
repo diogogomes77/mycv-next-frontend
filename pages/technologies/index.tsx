@@ -1,10 +1,10 @@
-import axios from 'axios';
 import Footer from 'components/Footer';
+import { technologiesApi } from 'config/createAxiosInstance';
+import { Technology } from 'config/generated-sdk';
 import { NextPage } from 'next';
 import Head from 'next/head';
 import React from 'react';
 import { BACKEND_URL } from 'utils/consts';
-import { Technology } from 'utils/types';
 import styles from '../../styles/Home.module.css';
 
 type TechnologiesProps = {
@@ -53,7 +53,8 @@ export default Technologies;
 
 export const getServerSideProps = async () => {
   console.log('BACKEND_URL: ', BACKEND_URL);
-  const { data } = await axios.get(`${BACKEND_URL}technologies/`);
+
+  const { data } = await technologiesApi.technologiesList();
 
   return {
     props: { technologies: data.results },

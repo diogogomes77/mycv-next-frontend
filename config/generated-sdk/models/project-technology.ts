@@ -12,34 +12,42 @@
  * Do not edit the class manually.
  */
 
+import { Technology } from './technology';
+
 /**
  *
  * @export
- * @interface CollaborationParents
+ * @interface ProjectTechnology
  */
-export interface CollaborationParents {
+export interface ProjectTechnology {
   /**
    *
    * @type {number}
-   * @memberof CollaborationParents
+   * @memberof ProjectTechnology
    */
-  id?: number;
+  id: number;
   /**
    *
    * @type {string}
-   * @memberof CollaborationParents
+   * @memberof ProjectTechnology
+   */
+  comment?: string | null;
+  /**
+   *
+   * @type {string}
+   * @memberof ProjectTechnology
    */
   name: string;
   /**
    *
    * @type {string}
-   * @memberof CollaborationParents
+   * @memberof ProjectTechnology
    */
-  content?: string | null;
+  content: string;
   /**
    *
-   * @type {Set<number>}
-   * @memberof CollaborationParents
+   * @type {Technology}
+   * @memberof ProjectTechnology
    */
-  parents?: Set<number>;
+  technology: Technology;
 }

@@ -15,25 +15,25 @@
 /**
  *
  * @export
- * @interface ProjectList
+ * @interface TechnologyParentCollaboration
  */
-export interface ProjectList {
+export interface TechnologyParentCollaboration {
   /**
    *
    * @type {number}
-   * @memberof ProjectList
+   * @memberof TechnologyParentCollaboration
    */
   id?: number;
   /**
    *
-   * @type {string}
-   * @memberof ProjectList
+   * @type {number}
+   * @memberof TechnologyParentCollaboration
    */
-  name: string;
+  collaborator: number;
   /**
    *
-   * @type {string}
-   * @memberof ProjectList
+   * @type {number}
+   * @memberof TechnologyParentCollaboration
    */
-  description?: string;
+  project: number;
 }

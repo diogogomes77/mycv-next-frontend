@@ -1,8 +1,7 @@
 import React from 'react';
 import styles from '/styles/Home.module.css';
-import { Collaboration, TechnologyCollaboration } from 'utils/types';
-import TechnologyList from './TechnologyList';
 import Link from 'next/link';
+import { TechnologyCollaboration } from 'config/generated-sdk';
 
 type Props = {
   collaboration: TechnologyCollaboration;
@@ -11,12 +10,12 @@ type Props = {
 const TechnologyCollaborationCard: React.FC<Props> = ({ collaboration }) => {
   return (
     <div className={styles.card}>
-      <h3>{collaboration.collaborator.first_name}</h3>
+      <h3>{collaboration.collaborator?.firstName}</h3>
       <Link
-        key={`project-${collaboration.project.id}`}
-        href={`/projects/${collaboration.project.id}`}
+        key={`project-${collaboration.project?.id}`}
+        href={`/projects/${collaboration.project?.id}`}
       >
-        <h2>{collaboration.project.name}</h2>
+        <h2>{collaboration.project?.name}</h2>
       </Link>
     </div>
   );

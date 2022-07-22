@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from '/styles/Home.module.css';
 import Link from 'next/link';
-import { TechnologyProject } from 'utils/types';
+import { TechnologyProject } from 'config/generated-sdk';
 
 type Props = {
   technologyProject: TechnologyProject;

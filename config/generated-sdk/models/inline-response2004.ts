@@ -12,7 +12,7 @@
  * Do not edit the class manually.
  */
 
-import { ProjectList } from './project-list';
+import { Project } from './project';
 
 /**
  *
@@ -40,8 +40,8 @@ export interface InlineResponse2004 {
   previous?: string | null;
   /**
    *
-   * @type {Array<ProjectList>}
+   * @type {Array<Project>}
    * @memberof InlineResponse2004
    */
-  results: Array<ProjectList>;
+  results: Array<Project>;
 }

@@ -1,5 +1,5 @@
+import { TechnologyCollaboration } from 'config/generated-sdk';
 import React from 'react';
-import { Collaboration, TechnologyCollaboration } from 'utils/types';
 import styles from '../styles/Home.module.css';
 import TechnologyCollaborationCard from './TechnologyCollaborationCard';
 

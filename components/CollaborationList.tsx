@@ -1,5 +1,5 @@
+import { Collaboration } from 'config/generated-sdk';
 import React from 'react';
-import { Collaboration } from 'utils/types';
 import styles from '../styles/Home.module.css';
 import CollaborationCard from './CollaborationCard';
 

@@ -2,7 +2,7 @@ import axios from 'axios';
 import applyCaseConverter from 'axios-case-converter';
 import { stringify } from 'querystring';
 import { BACKEND_URL } from 'utils/consts';
-import { Configuration, ProjectsApi } from './generated-sdk';
+import { Configuration, ProjectsApi, TechnologiesApi } from './generated-sdk';
 import { httpErrorsInterceptor } from './interceptors';
 
 const createAxiosInstance = () => {
@@ -26,4 +26,10 @@ const getAxiosProjectsApi = () => {
 
 const projectsApi = getAxiosProjectsApi();
 
-export { projectsApi };
+const getAxiosTechnologiesApi = () => {
+  return new TechnologiesApi(new Configuration(), '', instance);
+};
+
+const technologiesApi = getAxiosTechnologiesApi();
+
+export { projectsApi, technologiesApi };

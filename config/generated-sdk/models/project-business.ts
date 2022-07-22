@@ -15,31 +15,25 @@
 /**
  *
  * @export
- * @interface CollaborationCollaboratorUserPermissions
+ * @interface ProjectBusiness
  */
-export interface CollaborationCollaboratorUserPermissions {
+export interface ProjectBusiness {
   /**
    *
    * @type {number}
-   * @memberof CollaborationCollaboratorUserPermissions
+   * @memberof ProjectBusiness
    */
   id?: number;
   /**
    *
    * @type {string}
-   * @memberof CollaborationCollaboratorUserPermissions
+   * @memberof ProjectBusiness
    */
   name: string;
   /**
    *
-   * @type {string}
-   * @memberof CollaborationCollaboratorUserPermissions
-   */
-  codename: string;
-  /**
-   *
    * @type {number}
-   * @memberof CollaborationCollaboratorUserPermissions
+   * @memberof ProjectBusiness
    */
-  contentType: number;
+  country?: number | null;
 }

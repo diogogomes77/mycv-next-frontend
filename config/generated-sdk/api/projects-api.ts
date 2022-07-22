@@ -26,7 +26,7 @@ import {
 // @ts-ignore
 import { InlineResponse2004 } from '../models';
 // @ts-ignore
-import { ProjectList } from '../models';
+import { Project } from '../models';
 /**
  * ProjectsApi - axios parameter creator
  * @export
@@ -211,7 +211,7 @@ export const ProjectsApiFp = function (configuration?: Configuration) {
       id: number,
       options?: any,
     ): Promise<
-      (axios?: AxiosInstance, basePath?: string) => AxiosPromise<ProjectList>
+      (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Project>
     > {
       const localVarAxiosArgs = await ProjectsApiAxiosParamCreator(
         configuration,
@@ -260,7 +260,7 @@ export const ProjectsApiFactory = function (
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    projectsRead(id: number, options?: any): AxiosPromise<ProjectList> {
+    projectsRead(id: number, options?: any): AxiosPromise<Project> {
       return ProjectsApiFp(configuration)
         .projectsRead(id, options)
         .then(request => request(axios, basePath));

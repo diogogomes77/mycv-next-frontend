@@ -14,6 +14,7 @@
 
 import { CollaborationCollaborator } from './collaboration-collaborator';
 import { CollaborationTechnologies } from './collaboration-technologies';
+import { Group } from './group';
 
 /**
  *
@@ -27,6 +28,12 @@ export interface Collaboration {
    * @memberof Collaboration
    */
   id?: number;
+  /**
+   *
+   * @type {Array<Group>}
+   * @memberof Collaboration
+   */
+  groups: Array<Group>;
   /**
    *
    * @type {CollaborationCollaborator}

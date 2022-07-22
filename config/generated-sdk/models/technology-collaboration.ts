@@ -12,7 +12,7 @@
  * Do not edit the class manually.
  */
 
-import { TechnologyCollaborationCollaborator } from './technology-collaboration-collaborator';
+import { CollaborationCollaborator } from './collaboration-collaborator';
 import { TechnologyCollaborationProject } from './technology-collaboration-project';
 
 /**
@@ -29,10 +29,10 @@ export interface TechnologyCollaboration {
   id?: number;
   /**
    *
-   * @type {TechnologyCollaborationCollaborator}
+   * @type {CollaborationCollaborator}
    * @memberof TechnologyCollaboration
    */
-  collaborator?: TechnologyCollaborationCollaborator;
+  collaborator?: CollaborationCollaborator;
   /**
    *
    * @type {TechnologyCollaborationProject}

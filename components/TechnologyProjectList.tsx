@@ -1,7 +1,6 @@
+import { TechnologyProject } from 'config/generated-sdk';
 import React from 'react';
-import { TechnologyProject } from 'utils/types';
 import styles from '../styles/Home.module.css';
-import TechnologyCard from './TechnologyCard';
 import TechnologyProjectCard from './TechnologyProject';
 
 type Props = {

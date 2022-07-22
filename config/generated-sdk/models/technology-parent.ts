@@ -12,50 +12,49 @@
  * Do not edit the class manually.
  */
 
-import { TechnologyCollaboration } from './technology-collaboration';
-import { TechnologyParent } from './technology-parent';
+import { TechnologyParentCollaboration } from './technology-parent-collaboration';
 import { TechnologyProject } from './technology-project';
 
 /**
  *
  * @export
- * @interface Technology
+ * @interface TechnologyParent
  */
-export interface Technology {
+export interface TechnologyParent {
   /**
    *
    * @type {number}
-   * @memberof Technology
+   * @memberof TechnologyParent
    */
   id?: number;
   /**
    *
    * @type {Array<TechnologyProject>}
-   * @memberof Technology
+   * @memberof TechnologyParent
    */
   projects: Array<TechnologyProject>;
   /**
    *
-   * @type {Array<TechnologyCollaboration>}
-   * @memberof Technology
+   * @type {Array<TechnologyParentCollaboration>}
+   * @memberof TechnologyParent
    */
-  collaborations: Array<TechnologyCollaboration>;
-  /**
-   *
-   * @type {Array<TechnologyParent>}
-   * @memberof Technology
-   */
-  parents: Array<TechnologyParent>;
+  collaborations: Array<TechnologyParentCollaboration>;
   /**
    *
    * @type {string}
-   * @memberof Technology
+   * @memberof TechnologyParent
    */
   name: string;
   /**
    *
    * @type {string}
-   * @memberof Technology
+   * @memberof TechnologyParent
    */
   content?: string | null;
+  /**
+   *
+   * @type {Set<number>}
+   * @memberof TechnologyParent
+   */
+  parents?: Set<number>;
 }

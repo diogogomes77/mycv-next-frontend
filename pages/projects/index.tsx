@@ -1,13 +1,12 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
 import styles from '../../styles/Home.module.css';
-import axios from 'axios';
 import React from 'react';
 import Link from 'next/link';
-import { Project } from 'utils/types';
 import { BACKEND_URL } from 'utils/consts';
 import Footer from 'components/Footer';
 import { projectsApi } from 'config/createAxiosInstance';
+import { Project } from 'config/generated-sdk/models/project';
 
 type ProjectsProps = {
   projects: Project[];

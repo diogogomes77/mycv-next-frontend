@@ -1,5 +1,5 @@
+import { Technology } from 'config/generated-sdk';
 import React from 'react';
-import { Technology } from 'utils/types';
 import styles from '../styles/Home.module.css';
 import TechnologyCard from './TechnologyCard';
 
