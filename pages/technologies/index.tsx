@@ -1,5 +1,5 @@
+import { technologiesApi } from 'apiClients';
 import Footer from 'components/Footer';
-import { technologiesApi } from 'config/createAxiosInstance';
 import { Technology } from 'config/generated-sdk';
 import { NextPage } from 'next';
 import Head from 'next/head';

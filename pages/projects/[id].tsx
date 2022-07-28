@@ -5,9 +5,9 @@ import ProjectTechnologyList from 'components/ProjectTechnologyList';
 import Head from 'next/head';
 import CollaborationList from 'components/CollaborationList';
 import Footer from 'components/Footer';
-import { projectsApi } from 'config/createAxiosInstance';
 import { ProjectsApiProjectsReadRequest } from 'config/generated-sdk';
 import { Project } from 'config/generated-sdk/models/project';
+import { projectsApi } from 'apiClients';
 
 type IdProps = {
   project: Project;

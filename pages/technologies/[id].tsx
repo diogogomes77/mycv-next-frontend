@@ -10,7 +10,7 @@ import {
   TechnologiesApiTechnologiesReadRequest,
   Technology,
 } from 'config/generated-sdk';
-import { technologiesApi } from 'config/createAxiosInstance';
+import { technologiesApi } from 'apiClients';
 
 type IdProps = {
   technology: Technology;

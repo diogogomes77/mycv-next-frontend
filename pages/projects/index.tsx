@@ -5,8 +5,8 @@ import React from 'react';
 import Link from 'next/link';
 import { BACKEND_URL } from 'utils/consts';
 import Footer from 'components/Footer';
-import { projectsApi } from 'config/createAxiosInstance';
 import { Project } from 'config/generated-sdk/models/project';
+import { projectsApi } from 'apiClients';
 
 type ProjectsProps = {
   projects: Project[];
