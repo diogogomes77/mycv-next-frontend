@@ -3,7 +3,7 @@ localDir=`dirname $0`
 pathToScript=$1
 host="http://localhost:8000"
 
-remotePath="$host/swagger/?format=openapi"
+remotePath="$host/api-docs/?format=openapi"
 
 rm -rf $pathToScript/api
 rm -rf $pathToScript/models 
