@@ -12,8 +12,6 @@
  * Do not edit the class manually.
  */
 
-import { Technology } from './technology';
-
 /**
  *
  * @export
@@ -25,7 +23,13 @@ export interface ProjectTechnology {
    * @type {number}
    * @memberof ProjectTechnology
    */
-  id: number;
+  technologyId: number;
+  /**
+   *
+   * @type {string}
+   * @memberof ProjectTechnology
+   */
+  technologySlug: string;
   /**
    *
    * @type {string}
@@ -37,17 +41,11 @@ export interface ProjectTechnology {
    * @type {string}
    * @memberof ProjectTechnology
    */
-  name: string;
+  technologyName: string;
   /**
    *
    * @type {string}
    * @memberof ProjectTechnology
    */
-  content: string;
-  /**
-   *
-   * @type {Technology}
-   * @memberof ProjectTechnology
-   */
-  technology: Technology;
+  technologyContent: string;
 }

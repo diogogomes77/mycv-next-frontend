@@ -13,7 +13,6 @@
  */
 
 import { Collaboration } from './collaboration';
-import { ProjectBusiness } from './project-business';
 import { ProjectTechnology } from './project-technology';
 
 /**
@@ -39,7 +38,7 @@ export interface Project {
    * @type {Array<ProjectTechnology>}
    * @memberof Project
    */
-  technologies?: Array<ProjectTechnology>;
+  projectTechnologies?: Array<ProjectTechnology>;
   /**
    *
    * @type {string}
@@ -60,8 +59,14 @@ export interface Project {
   slug: string;
   /**
    *
-   * @type {ProjectBusiness}
+   * @type {number}
    * @memberof Project
    */
-  business?: ProjectBusiness;
+  business?: number | null;
+  /**
+   *
+   * @type {Set<number>}
+   * @memberof Project
+   */
+  technologies?: Set<number>;
 }

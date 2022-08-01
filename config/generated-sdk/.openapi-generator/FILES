@@ -27,13 +27,7 @@ models/inline-response2004.ts
 models/inline-response2005.ts
 models/inline-response2006.ts
 models/manager.ts
-models/project-business.ts
 models/project-technology.ts
 models/project.ts
-models/technology-collaboration-project.ts
-models/technology-collaboration.ts
-models/technology-parent-collaboration.ts
-models/technology-parent.ts
-models/technology-project.ts
 models/technology.ts
 models/user.ts

@@ -12,10 +12,6 @@
  * Do not edit the class manually.
  */
 
-import { TechnologyCollaboration } from './technology-collaboration';
-import { TechnologyParent } from './technology-parent';
-import { TechnologyProject } from './technology-project';
-
 /**
  *
  * @export
@@ -28,24 +24,6 @@ export interface Technology {
    * @memberof Technology
    */
   id?: number;
-  /**
-   *
-   * @type {Array<TechnologyProject>}
-   * @memberof Technology
-   */
-  projects: Array<TechnologyProject>;
-  /**
-   *
-   * @type {Array<TechnologyCollaboration>}
-   * @memberof Technology
-   */
-  collaborations: Array<TechnologyCollaboration>;
-  /**
-   *
-   * @type {Array<TechnologyParent>}
-   * @memberof Technology
-   */
-  parents: Array<TechnologyParent>;
   /**
    *
    * @type {string}
@@ -64,4 +42,10 @@ export interface Technology {
    * @memberof Technology
    */
   slug: string;
+  /**
+   *
+   * @type {Set<number>}
+   * @memberof Technology
+   */
+  parents?: Set<number>;
 }
