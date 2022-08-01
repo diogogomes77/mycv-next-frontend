@@ -38,6 +38,12 @@ export interface TechnologyCollaborationProject {
   description?: string;
   /**
    *
+   * @type {string}
+   * @memberof TechnologyCollaborationProject
+   */
+  slug: string;
+  /**
+   *
    * @type {number}
    * @memberof TechnologyCollaborationProject
    */

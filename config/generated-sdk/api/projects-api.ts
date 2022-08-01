@@ -98,24 +98,24 @@ export const ProjectsApiAxiosParamCreator = function (
     },
     /**
      * API endpoint to handle project related requests.
-     * @param {number} id A unique integer value identifying this project.
+     * @param {string} slug
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
     projectsRead: async (
-      id: number,
+      slug: string,
       options: any = {},
     ): Promise<RequestArgs> => {
-      // verify required parameter 'id' is not null or undefined
-      if (id === null || id === undefined) {
+      // verify required parameter 'slug' is not null or undefined
+      if (slug === null || slug === undefined) {
         throw new RequiredError(
-          'id',
-          'Required parameter id was null or undefined when calling projectsRead.',
+          'slug',
+          'Required parameter slug was null or undefined when calling projectsRead.',
         );
       }
-      const localVarPath = `/projects/{id}/`.replace(
-        `{${'id'}}`,
-        encodeURIComponent(String(id)),
+      const localVarPath = `/projects/{slug}/`.replace(
+        `{${'slug'}}`,
+        encodeURIComponent(String(slug)),
       );
       // use dummy base URL string because the URL constructor only accepts absolute URLs.
       const localVarUrlObj = new URL(localVarPath, 'https://example.com');
@@ -203,19 +203,19 @@ export const ProjectsApiFp = function (configuration?: Configuration) {
     },
     /**
      * API endpoint to handle project related requests.
-     * @param {number} id A unique integer value identifying this project.
+     * @param {string} slug
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
     async projectsRead(
-      id: number,
+      slug: string,
       options?: any,
     ): Promise<
       (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Project>
     > {
       const localVarAxiosArgs = await ProjectsApiAxiosParamCreator(
         configuration,
-      ).projectsRead(id, options);
+      ).projectsRead(slug, options);
       return (
         axios: AxiosInstance = globalAxios,
         basePath: string = BASE_PATH,
@@ -256,13 +256,13 @@ export const ProjectsApiFactory = function (
     },
     /**
      * API endpoint to handle project related requests.
-     * @param {number} id A unique integer value identifying this project.
+     * @param {string} slug
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    projectsRead(id: number, options?: any): AxiosPromise<Project> {
+    projectsRead(slug: string, options?: any): AxiosPromise<Project> {
       return ProjectsApiFp(configuration)
-        .projectsRead(id, options)
+        .projectsRead(slug, options)
         .then(request => request(axios, basePath));
     },
   };
@@ -289,11 +289,11 @@ export interface ProjectsApiProjectsListRequest {
  */
 export interface ProjectsApiProjectsReadRequest {
   /**
-   * A unique integer value identifying this project.
-   * @type {number}
+   *
+   * @type {string}
    * @memberof ProjectsApiProjectsRead
    */
-  readonly id: number;
+  readonly slug: string;
 }
 
 /**
@@ -331,7 +331,7 @@ export class ProjectsApi extends BaseAPI {
     options?: any,
   ) {
     return ProjectsApiFp(this.configuration)
-      .projectsRead(requestParameters.id, options)
+      .projectsRead(requestParameters.slug, options)
       .then(request => request(this.axios, this.basePath));
   }
 }

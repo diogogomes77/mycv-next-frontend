@@ -30,4 +30,10 @@ export interface TechnologyProject {
    * @memberof TechnologyProject
    */
   name: string;
+  /**
+   *
+   * @type {string}
+   * @memberof TechnologyProject
+   */
+  slug: string;
 }

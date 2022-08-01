@@ -13,7 +13,7 @@ type IdProps = {
   project: Project;
 };
 
-const Id: NextPage<IdProps> = ({ project }) => {
+const Slug: NextPage<IdProps> = ({ project }) => {
   const { collaborations, technologies } = project;
   return (
     <div className={styles.container}>
@@ -46,15 +46,15 @@ const Id: NextPage<IdProps> = ({ project }) => {
   );
 };
 
-export default Id;
+export default Slug;
 
 export const getServerSideProps: GetServerSideProps = async context => {
   const {
-    query: { id },
+    query: { slug },
   } = context;
 
   const params: ProjectsApiProjectsReadRequest = {
-    id: (id ?? 0) as number,
+    slug: (slug ?? '') as string,
   };
   const { data } = await projectsApi.projectsRead(params);
 

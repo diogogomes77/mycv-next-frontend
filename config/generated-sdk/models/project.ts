@@ -54,6 +54,12 @@ export interface Project {
   description?: string;
   /**
    *
+   * @type {string}
+   * @memberof Project
+   */
+  slug: string;
+  /**
+   *
    * @type {ProjectBusiness}
    * @memberof Project
    */
