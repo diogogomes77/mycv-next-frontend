@@ -10,7 +10,7 @@ type Props = {
 const TechnologyCard: React.FC<Props> = ({ technology }) => {
   return (
     <div className={styles.card}>
-      <Link href={`/technologies/${technology.id}`}>
+      <Link href={`/technologies/${technology.slug}`}>
         <p>{technology.name}</p>
       </Link>
     </div>

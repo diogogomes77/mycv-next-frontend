@@ -36,7 +36,7 @@ export const TechnologiesApiAxiosParamCreator = function (
 ) {
   return {
     /**
-     * API endpoint that allows technologies to be viewed or edited.
+     * API endpoint that allows technologies to be viewed.
      * @param {number} [page] A page number within the paginated result set.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -97,25 +97,25 @@ export const TechnologiesApiAxiosParamCreator = function (
       };
     },
     /**
-     * API endpoint that allows technologies to be viewed or edited.
-     * @param {number} id A unique integer value identifying this technology.
+     * API endpoint that allows technologies to be viewed.
+     * @param {string} slug
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
     technologiesRead: async (
-      id: number,
+      slug: string,
       options: any = {},
     ): Promise<RequestArgs> => {
-      // verify required parameter 'id' is not null or undefined
-      if (id === null || id === undefined) {
+      // verify required parameter 'slug' is not null or undefined
+      if (slug === null || slug === undefined) {
         throw new RequiredError(
-          'id',
-          'Required parameter id was null or undefined when calling technologiesRead.',
+          'slug',
+          'Required parameter slug was null or undefined when calling technologiesRead.',
         );
       }
-      const localVarPath = `/technologies/{id}/`.replace(
-        `{${'id'}}`,
-        encodeURIComponent(String(id)),
+      const localVarPath = `/technologies/{slug}/`.replace(
+        `{${'slug'}}`,
+        encodeURIComponent(String(slug)),
       );
       // use dummy base URL string because the URL constructor only accepts absolute URLs.
       const localVarUrlObj = new URL(localVarPath, 'https://example.com');
@@ -173,7 +173,7 @@ export const TechnologiesApiAxiosParamCreator = function (
 export const TechnologiesApiFp = function (configuration?: Configuration) {
   return {
     /**
-     * API endpoint that allows technologies to be viewed or edited.
+     * API endpoint that allows technologies to be viewed.
      * @param {number} [page] A page number within the paginated result set.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -202,20 +202,20 @@ export const TechnologiesApiFp = function (configuration?: Configuration) {
       };
     },
     /**
-     * API endpoint that allows technologies to be viewed or edited.
-     * @param {number} id A unique integer value identifying this technology.
+     * API endpoint that allows technologies to be viewed.
+     * @param {string} slug
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
     async technologiesRead(
-      id: number,
+      slug: string,
       options?: any,
     ): Promise<
       (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Technology>
     > {
       const localVarAxiosArgs = await TechnologiesApiAxiosParamCreator(
         configuration,
-      ).technologiesRead(id, options);
+      ).technologiesRead(slug, options);
       return (
         axios: AxiosInstance = globalAxios,
         basePath: string = BASE_PATH,
@@ -241,7 +241,7 @@ export const TechnologiesApiFactory = function (
 ) {
   return {
     /**
-     * API endpoint that allows technologies to be viewed or edited.
+     * API endpoint that allows technologies to be viewed.
      * @param {number} [page] A page number within the paginated result set.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -255,14 +255,14 @@ export const TechnologiesApiFactory = function (
         .then(request => request(axios, basePath));
     },
     /**
-     * API endpoint that allows technologies to be viewed or edited.
-     * @param {number} id A unique integer value identifying this technology.
+     * API endpoint that allows technologies to be viewed.
+     * @param {string} slug
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    technologiesRead(id: number, options?: any): AxiosPromise<Technology> {
+    technologiesRead(slug: string, options?: any): AxiosPromise<Technology> {
       return TechnologiesApiFp(configuration)
-        .technologiesRead(id, options)
+        .technologiesRead(slug, options)
         .then(request => request(axios, basePath));
     },
   };
@@ -289,11 +289,11 @@ export interface TechnologiesApiTechnologiesListRequest {
  */
 export interface TechnologiesApiTechnologiesReadRequest {
   /**
-   * A unique integer value identifying this technology.
-   * @type {number}
+   *
+   * @type {string}
    * @memberof TechnologiesApiTechnologiesRead
    */
-  readonly id: number;
+  readonly slug: string;
 }
 
 /**
@@ -304,7 +304,7 @@ export interface TechnologiesApiTechnologiesReadRequest {
  */
 export class TechnologiesApi extends BaseAPI {
   /**
-   * API endpoint that allows technologies to be viewed or edited.
+   * API endpoint that allows technologies to be viewed.
    * @param {TechnologiesApiTechnologiesListRequest} requestParameters Request parameters.
    * @param {*} [options] Override http request option.
    * @throws {RequiredError}
@@ -320,7 +320,7 @@ export class TechnologiesApi extends BaseAPI {
   }
 
   /**
-   * API endpoint that allows technologies to be viewed or edited.
+   * API endpoint that allows technologies to be viewed.
    * @param {TechnologiesApiTechnologiesReadRequest} requestParameters Request parameters.
    * @param {*} [options] Override http request option.
    * @throws {RequiredError}
@@ -331,7 +331,7 @@ export class TechnologiesApi extends BaseAPI {
     options?: any,
   ) {
     return TechnologiesApiFp(this.configuration)
-      .technologiesRead(requestParameters.id, options)
+      .technologiesRead(requestParameters.slug, options)
       .then(request => request(this.axios, this.basePath));
   }
 }

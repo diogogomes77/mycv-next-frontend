@@ -16,7 +16,7 @@ type IdProps = {
   technology: Technology;
 };
 
-const Id: NextPage<IdProps> = ({ technology }) => {
+const Slug: NextPage<IdProps> = ({ technology }) => {
   const { parents, projects, collaborations } = technology;
 
   return (
@@ -51,15 +51,15 @@ const Id: NextPage<IdProps> = ({ technology }) => {
   );
 };
 
-export default Id;
+export default Slug;
 
 export const getServerSideProps: GetServerSideProps = async context => {
   const {
-    query: { id },
+    query: { slug },
   } = context;
 
   const params: TechnologiesApiTechnologiesReadRequest = {
-    id: (id ?? 0) as number,
+    slug: (slug ?? '') as string,
   };
 
   const { data } = await technologiesApi.technologiesRead(params);

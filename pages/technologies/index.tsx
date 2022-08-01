@@ -34,7 +34,7 @@ const Technologies: NextPage<TechnologiesProps> = ({ technologies }) => {
           {technologies.map(technology => (
             <a
               key={`technology-${technology.id}`}
-              href={`/technologies/${technology.id}`}
+              href={`/technologies/${technology.slug}`}
               className={styles.card}
             >
               <h2>{technology.name}</h2>

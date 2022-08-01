@@ -38,6 +38,12 @@ export interface CollaborationTechnologies {
   content?: string | null;
   /**
    *
+   * @type {string}
+   * @memberof CollaborationTechnologies
+   */
+  slug: string;
+  /**
+   *
    * @type {Set<number>}
    * @memberof CollaborationTechnologies
    */

@@ -58,4 +58,10 @@ export interface Technology {
    * @memberof Technology
    */
   content?: string | null;
+  /**
+   *
+   * @type {string}
+   * @memberof Technology
+   */
+  slug: string;
 }

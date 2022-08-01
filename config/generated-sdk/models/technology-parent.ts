@@ -53,6 +53,12 @@ export interface TechnologyParent {
   content?: string | null;
   /**
    *
+   * @type {string}
+   * @memberof TechnologyParent
+   */
+  slug: string;
+  /**
+   *
    * @type {Set<number>}
    * @memberof TechnologyParent
    */
