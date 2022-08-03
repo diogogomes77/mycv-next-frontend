@@ -15,4 +15,7 @@ export * from './manager';
 export * from './project';
 export * from './project-technology';
 export * from './technology';
+export * from './technology-collaboration';
+export * from './technology-parent';
+export * from './technology-project';
 export * from './user';

@@ -11,13 +11,15 @@ import {
   Technology,
 } from 'config/generated-sdk';
 import { technologiesApi } from 'apiClients';
+import { AxiosResponse } from 'axios';
 
 type IdProps = {
   technology: Technology;
+  parents: Technology[];
 };
 
-const Slug: NextPage<IdProps> = ({ technology }) => {
-  const { parents, projects, collaborations } = technology;
+const Slug: NextPage<IdProps> = ({ technology, parents }) => {
+  const { projects, collaborations } = technology;
 
   return (
     <div className={styles.container}>
@@ -33,7 +35,7 @@ const Slug: NextPage<IdProps> = ({ technology }) => {
 
         {parents && parents.length > 0 && <h3>Parent technologies</h3>}
         {parents && parents.length > 0 && (
-          <TechnologyList technologies={parents as unknown as Technology[]} />
+          <TechnologyList technologies={parents} />
         )}
 
         {technology.projects.length > 0 && <h3>Projects</h3>}
@@ -62,9 +64,24 @@ export const getServerSideProps: GetServerSideProps = async context => {
     slug: (slug ?? '') as string,
   };
 
-  const { data } = await technologiesApi.technologiesRead(params);
+  const { data: technology } = await technologiesApi.technologiesRead(params);
+
+  const parents = new Array<Technology>();
+  const readPromises: Promise<AxiosResponse<Technology, any>>[] = [];
+
+  technology.parents?.forEach(parentTech => {
+    const { slug } = parentTech;
+    console.log('technologySlug: ', slug);
+    const readPromise = technologiesApi.technologiesRead({
+      slug,
+    });
+    readPromise.then(({ data }) => parents.push(data));
+    readPromises.push(readPromise);
+  });
+
+  await Promise.all(readPromises);
 
   return {
-    props: { technology: data },
+    props: { technology, parents },
   };
 };
