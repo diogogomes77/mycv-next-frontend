@@ -11,12 +11,10 @@ const TechnologyProjectList: React.FC<Props> = ({ technologyProject }) => {
   return (
     <div className={styles.container}>
       {technologyProject.map(projectTechnology => (
-        <>
-          <TechnologyProjectCard
-            technologyProject={projectTechnology}
-            key={`technologyProject-${projectTechnology.id}`}
-          />
-        </>
+        <TechnologyProjectCard
+          technologyProject={projectTechnology}
+          key={projectTechnology.id}
+        />
       ))}
     </div>
   );

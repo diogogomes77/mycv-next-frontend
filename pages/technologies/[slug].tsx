@@ -7,19 +7,21 @@ import Footer from 'components/Footer';
 import TechnologyProjectList from 'components/TechnologyProjectList';
 import TechnologyCollaborationList from 'components/TechnologyCollaborationList';
 import {
+  Project,
   TechnologiesApiTechnologiesReadRequest,
   Technology,
 } from 'config/generated-sdk';
-import { technologiesApi } from 'apiClients';
+import { projectsApi, technologiesApi } from 'apiClients';
 import { AxiosResponse } from 'axios';
 
 type IdProps = {
   technology: Technology;
   parents: Technology[];
+  projects: Project[];
 };
 
-const Slug: NextPage<IdProps> = ({ technology, parents }) => {
-  const { projects, collaborations } = technology;
+const Slug: NextPage<IdProps> = ({ technology, parents, projects }) => {
+  const { collaborations } = technology;
 
   return (
     <div className={styles.container}>
@@ -38,8 +40,8 @@ const Slug: NextPage<IdProps> = ({ technology, parents }) => {
           <TechnologyList technologies={parents} />
         )}
 
-        {technology.projects.length > 0 && <h3>Projects</h3>}
-        {technology.projects.length > 0 && (
+        {projects.length > 0 && <h3>Projects</h3>}
+        {projects.length > 0 && (
           <TechnologyProjectList technologyProject={projects} />
         )}
 
@@ -55,6 +57,40 @@ const Slug: NextPage<IdProps> = ({ technology, parents }) => {
 
 export default Slug;
 
+const getParents = async (technology: Technology) => {
+  const parents = new Array<Technology>();
+  const readPromises: Promise<AxiosResponse<Technology, any>>[] = [];
+
+  technology.parents?.forEach(parentTech => {
+    const { slug } = parentTech;
+    const readPromise = technologiesApi.technologiesRead({
+      slug,
+    });
+    readPromise.then(({ data }) => parents.push(data));
+    readPromises.push(readPromise);
+  });
+
+  await Promise.all(readPromises);
+
+  return parents;
+};
+
+const getProjects = async (technology: Technology) => {
+  const projects = new Array<Project>();
+  const readPromises: Promise<AxiosResponse<Project, any>>[] = [];
+
+  technology.projects?.forEach(projectTech => {
+    const { slug } = projectTech;
+    const readPromise = projectsApi.projectsRead({ slug });
+    readPromise.then(({ data }) => projects.push(data));
+    readPromises.push(readPromise);
+  });
+
+  await Promise.all(readPromises);
+
+  return projects;
+};
+
 export const getServerSideProps: GetServerSideProps = async context => {
   const {
     query: { slug },
@@ -66,22 +102,12 @@ export const getServerSideProps: GetServerSideProps = async context => {
 
   const { data: technology } = await technologiesApi.technologiesRead(params);
 
-  const parents = new Array<Technology>();
-  const readPromises: Promise<AxiosResponse<Technology, any>>[] = [];
+  const $parents = getParents(technology);
+  const $projects = getProjects(technology);
 
-  technology.parents?.forEach(parentTech => {
-    const { slug } = parentTech;
-    console.log('technologySlug: ', slug);
-    const readPromise = technologiesApi.technologiesRead({
-      slug,
-    });
-    readPromise.then(({ data }) => parents.push(data));
-    readPromises.push(readPromise);
-  });
-
-  await Promise.all(readPromises);
+  const [parents, projects] = await Promise.all([$parents, $projects]);
 
   return {
-    props: { technology, parents },
+    props: { technology, parents, projects },
   };
 };
