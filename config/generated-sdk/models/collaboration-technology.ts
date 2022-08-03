@@ -15,37 +15,37 @@
 /**
  *
  * @export
- * @interface CollaborationTechnologies
+ * @interface CollaborationTechnology
  */
-export interface CollaborationTechnologies {
+export interface CollaborationTechnology {
   /**
    *
    * @type {number}
-   * @memberof CollaborationTechnologies
+   * @memberof CollaborationTechnology
    */
-  id?: number;
+  technologyId: number;
   /**
    *
    * @type {string}
-   * @memberof CollaborationTechnologies
+   * @memberof CollaborationTechnology
    */
-  name: string;
+  technologySlug: string;
   /**
    *
    * @type {string}
-   * @memberof CollaborationTechnologies
+   * @memberof CollaborationTechnology
    */
-  content?: string | null;
+  comment?: string | null;
   /**
    *
    * @type {string}
-   * @memberof CollaborationTechnologies
+   * @memberof CollaborationTechnology
    */
-  slug: string;
+  technologyName: string;
   /**
    *
-   * @type {Set<number>}
-   * @memberof CollaborationTechnologies
+   * @type {string}
+   * @memberof CollaborationTechnology
    */
-  parents?: Set<number>;
+  technologyContent: string;
 }

@@ -1,21 +1,33 @@
 import React from 'react';
-import styles from '/styles/Home.module.css';
 import Link from 'next/link';
-import { TechnologyCollaboration } from 'config/generated-sdk';
+import { Collaboration, Technology } from 'config/generated-sdk';
+import UserCard from './UserCard';
 
 type Props = {
-  collaboration: TechnologyCollaboration;
+  collaboration: Collaboration;
+  technology: Technology;
 };
 
-const TechnologyCollaborationCard: React.FC<Props> = ({ collaboration }) => {
+const TechnologyCollaborationCard: React.FC<Props> = ({
+  collaboration,
+  technology,
+}) => {
+  const { collaborator, project, collaborationTechnologies } = collaboration;
+  const collabTech = collaborationTechnologies?.find(
+    collabTech => collabTech.technologyId === technology.id,
+  );
   return (
-    <div className={styles.card}>
-      <h3>{collaboration.collaborator?.firstName}</h3>
+    <div>
+      <UserCard user={collaborator} />
       <Link
-        key={`project-${collaboration.project?.id}`}
-        href={`/projects/${collaboration.project?.id}`}
+        key={`project-${collaboration.project.slug}`}
+        href={`/projects/${collaboration.project.slug}`}
       >
-        <h2>{collaboration.project?.name}</h2>
+        <div>
+          <h4>Project</h4>
+          <h2>{project.name}</h2>
+          <p>{collabTech?.comment}</p>
+        </div>
       </Link>
     </div>
   );

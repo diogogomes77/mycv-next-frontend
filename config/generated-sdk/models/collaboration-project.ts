@@ -15,19 +15,25 @@
 /**
  *
  * @export
- * @interface Group
+ * @interface CollaborationProject
  */
-export interface Group {
+export interface CollaborationProject {
   /**
    *
    * @type {number}
-   * @memberof Group
+   * @memberof CollaborationProject
    */
   id?: number;
   /**
    *
    * @type {string}
-   * @memberof Group
+   * @memberof CollaborationProject
+   */
+  slug: string;
+  /**
+   *
+   * @type {string}
+   * @memberof CollaborationProject
    */
   name: string;
 }

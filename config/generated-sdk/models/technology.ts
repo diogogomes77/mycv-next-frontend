@@ -57,11 +57,11 @@ export interface Technology {
    * @type {string}
    * @memberof Technology
    */
-  content?: string | null;
+  slug: string;
   /**
    *
    * @type {string}
    * @memberof Technology
    */
-  slug: string;
+  content?: string | null;
 }

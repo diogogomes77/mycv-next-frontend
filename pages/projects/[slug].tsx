@@ -19,6 +19,7 @@ type IdProps = {
 };
 
 const Slug: NextPage<IdProps> = ({ project, technologies }) => {
+  // TODO: use technologies only
   const { collaborations, projectTechnologies } = project;
 
   return (
@@ -68,9 +69,7 @@ export const getServerSideProps: GetServerSideProps = async context => {
     slug: (slug ?? '') as string,
   };
   const { data: project } = await projectsApi.projectsRead(params);
-
   const technologies = new Array<Technology>();
-
   const readPromises: Promise<AxiosResponse<Technology, any>>[] = [];
 
   project.projectTechnologies?.forEach(projTech => {

@@ -23,7 +23,7 @@ export interface User {
    * @type {string}
    * @memberof User
    */
-  url?: string;
+  fullName?: string;
   /**
    * Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only.
    * @type {string}

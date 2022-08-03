@@ -13,11 +13,10 @@ configuration.ts
 git_push.sh
 index.ts
 models/business.ts
-models/collaboration-collaborator.ts
-models/collaboration-technologies.ts
+models/collaboration-project.ts
+models/collaboration-technology.ts
 models/collaboration.ts
 models/developer.ts
-models/group.ts
 models/index.ts
 models/inline-response200.ts
 models/inline-response2001.ts

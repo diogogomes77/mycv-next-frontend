@@ -7,22 +7,29 @@ import Footer from 'components/Footer';
 import TechnologyProjectList from 'components/TechnologyProjectList';
 import TechnologyCollaborationList from 'components/TechnologyCollaborationList';
 import {
+  Collaboration,
   Project,
   TechnologiesApiTechnologiesReadRequest,
   Technology,
 } from 'config/generated-sdk';
 import { projectsApi, technologiesApi } from 'apiClients';
 import { AxiosResponse } from 'axios';
+import collaborationsApi from 'apiClients/collaborationsApi ';
+import CollaborationList from 'components/CollaborationList';
 
 type IdProps = {
   technology: Technology;
   parents: Technology[];
   projects: Project[];
+  collaborations: Collaboration[];
 };
 
-const Slug: NextPage<IdProps> = ({ technology, parents, projects }) => {
-  const { collaborations } = technology;
-
+const Slug: NextPage<IdProps> = ({
+  technology,
+  parents,
+  projects,
+  collaborations,
+}) => {
   return (
     <div className={styles.container}>
       <Head>
@@ -45,9 +52,12 @@ const Slug: NextPage<IdProps> = ({ technology, parents, projects }) => {
           <TechnologyProjectList technologyProject={projects} />
         )}
 
-        {technology.collaborations.length > 0 && <h3>Collaborations</h3>}
-        {technology.collaborations.length > 0 && (
-          <TechnologyCollaborationList collaborations={collaborations} />
+        {collaborations.length > 0 && <h3>Collaborations</h3>}
+        {collaborations.length > 0 && (
+          <TechnologyCollaborationList
+            collaborations={collaborations}
+            technology={technology}
+          />
         )}
       </main>
       <Footer />
@@ -91,6 +101,24 @@ const getProjects = async (technology: Technology) => {
   return projects;
 };
 
+const getCollaborations = async (technology: Technology) => {
+  const collaborations = new Array<Collaboration>();
+  const readPromises: Promise<AxiosResponse<Collaboration, any>>[] = [];
+
+  technology.collaborations?.forEach(collaborationTech => {
+    const { id } = collaborationTech;
+    if (!id) return;
+
+    const readPromise = collaborationsApi.collaborationsRead({ id });
+    readPromise.then(({ data }) => collaborations.push(data));
+    readPromises.push(readPromise);
+  });
+
+  await Promise.all(readPromises);
+
+  return collaborations;
+};
+
 export const getServerSideProps: GetServerSideProps = async context => {
   const {
     query: { slug },
@@ -104,10 +132,15 @@ export const getServerSideProps: GetServerSideProps = async context => {
 
   const $parents = getParents(technology);
   const $projects = getProjects(technology);
+  const $collaborations = getCollaborations(technology);
 
-  const [parents, projects] = await Promise.all([$parents, $projects]);
+  const [parents, projects, collaborations] = await Promise.all([
+    $parents,
+    $projects,
+    $collaborations,
+  ]);
 
   return {
-    props: { technology, parents, projects },
+    props: { technology, parents, projects, collaborations },
   };
 };

@@ -12,9 +12,9 @@
  * Do not edit the class manually.
  */
 
-import { CollaborationCollaborator } from './collaboration-collaborator';
-import { CollaborationTechnologies } from './collaboration-technologies';
-import { Group } from './group';
+import { CollaborationProject } from './collaboration-project';
+import { CollaborationTechnology } from './collaboration-technology';
+import { User } from './user';
 
 /**
  *
@@ -30,16 +30,10 @@ export interface Collaboration {
   id?: number;
   /**
    *
-   * @type {Array<Group>}
+   * @type {User}
    * @memberof Collaboration
    */
-  groups: Array<Group>;
-  /**
-   *
-   * @type {CollaborationCollaborator}
-   * @memberof Collaboration
-   */
-  collaborator?: CollaborationCollaborator;
+  collaborator: User;
   /**
    *
    * @type {string}
@@ -54,8 +48,14 @@ export interface Collaboration {
   endedAt?: string | null;
   /**
    *
-   * @type {Array<CollaborationTechnologies>}
+   * @type {Array<CollaborationTechnology>}
    * @memberof Collaboration
    */
-  technologies?: Array<CollaborationTechnologies>;
+  collaborationTechnologies?: Array<CollaborationTechnology>;
+  /**
+   *
+   * @type {CollaborationProject}
+   * @memberof Collaboration
+   */
+  project: CollaborationProject;
 }
