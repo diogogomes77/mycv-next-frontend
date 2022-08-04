@@ -4,11 +4,11 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
+    "dev:local": "env-cmd -f .env next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "generate-api": "openapi-generator-cli version-manager set 5.0.0 && openapi-generator-cli generate -i http://localhost:8000/swagger/?format=openapi -g typescript-axios -o apiClient -c ./gen-config.json -p apiPackage=api,modelPackage=models --skip-validate-spec --additional-properties=useSingleRequestParameter=true",
-    "sdk": "sh ./bin/genClient.sh apiClient",
+    "generate-sdk": "sh ./config/bin/gen-client.sh ./config/generated-sdk",
     "test": "jest --coverage --passWithNoTests",
     "prettier-write": "prettier pages --write",
     "prettier": "prettier pages -c",
@@ -17,6 +17,9 @@
     "deploy": "rm -rf node_modules/.cache && next build && next export && touch out/.nojekyll && git add out/ -f && git commit -m \"Deploy Next.js to gh-pages\" --no-verify && git push origin `git subtree split --prefix out`:gh-pages --force"
   },
   "dependencies": {
+    "axios": "^0.27.2",
+    "axios-case-converter": "^0.9.0",
+    "lodash": "^4.17.21",
     "next": "12.1.6",
     "react": "18.1.0",
     "react-dom": "18.1.0"
@@ -29,9 +32,12 @@
     "@semantic-release/git": "^10.0.1",
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.3.0",
+    "@types/lodash": "^4.14.182",
     "@types/node": "17.0.42",
     "@types/react": "18.0.12",
     "@types/react-dom": "18.0.5",
+    "@typescript-eslint/eslint-plugin": "^5.28.0",
+    "env-cmd": "^10.1.0",
     "eslint": "8.17.0",
     "eslint-config-next": "12.1.6",
     "eslint-config-prettier": "^8.5.0",
